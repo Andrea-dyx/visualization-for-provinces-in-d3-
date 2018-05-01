@@ -1,0 +1,175 @@
+
+.axis text {
+  font: 10px sans-serif;
+  fill:black;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+.outer-div{
+	//background-color: #222;
+	border-radius: 7px;
+	border: 2px solid rgb(199, 199, 199);
+}
+.block-div {
+	height: 100%;
+	border-radius: 7px;
+}
+
+
+#top-div{
+	position: absolute;
+	width: 55%;
+	height: 80%;
+}
+#top-right{
+    position:absolute;
+    left:55%;
+	width: 45%;
+	height: 50%;
+}
+
+
+#bottom-div{
+	position: absolute;
+	top:80%;
+	width: 27.5%;
+	height: 20%;	
+}
+#bottom-div-right{
+    position: absolute;
+	top:80%;
+    left:27.5%;
+	width: 27.5%;
+	height: 20%;
+}
+#bottom-right{
+    position: absolute;
+    top:50%;
+    left:55%;
+    width: 45%;
+	height: 50%;
+}
+
+
+.btn-div{
+	margin:10px;
+	line-height:26px
+}
+#view2_btn{
+	height:26px;
+	margin: -26px 0 0;
+}
+
+#view2{
+	overflow:hidden;
+	bottom:0px;
+}
+
+
+.state{
+        fill: none;
+        stroke: #a9a9a9;
+        stroke-width: 1;
+    }
+.state:hover{
+        fill-opacity:0.5;
+    }
+.tooltip{  
+    position: absolute;  
+    width: 160px;  
+    height: auto;  
+    font-family: simsun;  
+    font-size: 14px;  
+    text-align: left;  
+    color: black;  
+    border-width: 2px solid white;  
+    background-color: white;  
+    border-radius: 5px;  
+}  
+  
+.tooltip:after{   
+    content: '';  
+    position: absolute;  
+    bottom: 100%;  
+    left: 20%;  
+    margin-left: -8px;  
+    width: 0;  
+    height: 0;  
+    border-bottom: 12px solid white;  
+    border-right: 12px solid transparent;  
+    border-left: 12px solid transparent;  
+} 
+
+.valueText {
+		font-family: arial;
+		font-size: 12px;
+		text-anchor: middle;
+}
+
+.titleText {
+		font-family: arial;
+		font-size: 20px;
+		text-anchor: middle;
+}
+
+.titleText_view2 {
+		font-family: arial;
+		font-size: 15px;
+		text-anchor: middle;
+}
+
+.bar {
+  
+  fill-opacity: .9;
+}
+
+label {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+
+.tooltip1{  
+    position: absolute;  
+    width: 160px;  
+    height: auto;  
+    font-family: simsun;  
+    font-size: 14px;  
+    text-align: center;  
+    color: black;  
+    border-width: 2px solid white;  
+    background-color: white;  
+    border-radius: 5px;  
+}  
+  
+.tooltip1:after{   
+    content: '';  
+    position: absolute;  
+    bottom: 100%;  
+    left: 20%;  
+    margin-left: -8px;  
+    width: 0;  
+    height: 0;  
+    border-bottom: 12px solid white;  
+    border-right: 12px solid transparent;  
+    border-left: 12px solid transparent;  
+} 
+
+.title{font-family:Arial,微软雅黑;font-size:18px;text-anchor:middle;}
+.subTitle{font-family:Arial,宋体;font-size:12px;text-anchor:middle;fill:#666}
+ 	 
+ 	 
+.inner_line path,
+.inner_line line {
+ 	fill: none;
+ 	stroke:#E7E7E7;
+ 	shape-rendering: crispEdges;
+}
+ 	 
+.legend{font-size: 12px; font-family:Arial, Helvetica, sans-serif}

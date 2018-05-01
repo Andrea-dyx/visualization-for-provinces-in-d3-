@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+<head>
+    <link rel="stylesheet" href="css/main.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+    
+    <title>省区经济指标分析</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/buttons.css">
+    <!-- js library --> 
+    <script src="jslib/jquery.min.js"></script>
+    <script src="jslib/d3.js"></script>
+    <script src="jslib/underscore-min.js"></script>
+    <script src="jslib/bootstrap.min.js"></script>
+    <script src="jslib/buttons.js"></script>
+    <!-- js file -->
+    <script src="js/view1.js"></script> <!-- creates uStates. -->
+    <script src="js/view4.js"></script> <!-- creates uStates. -->
+    <script src="js/view2.js"></script> <!-- creates uStates. -->
+    <script src="js/view3.js"></script> <!-- creates uStates. -->
+    <script src="js/view5.js"></script> <!-- creates uStates. -->
+    <!-- css -->
+    <link rel="stylesheet" href="css/main.css">
+    <script src="http://img.jb51.net/jslib/jquery/jquery.js" type="text/javascript"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){ 
+            $("#attribute").change(function(){ 
+                $("#attribute option").each(function(i,o){ 
+                    if($(this).attr("selected")) 
+                    { 
+                        $(".sub_attr").hide(); 
+                        $(".sub_attr").eq(i).show(); 
+                    } 
+                }); 
+            }); 
+            $("#attribute").change(); 
+        }); 
+    </script> 
+</head>
+
+<form>
+
+<div id="top-div" class="outer-div">
+    <div>
+    <input type="button" class = "button button1" id="mapAnim" value = "动画" onclick = "try_();" />
+    <select id="attribute"> 
+    <option>----请选择指标---- 
+    <option>人口 
+    <option>生产总值 
+    <option>居民消费水平
+    <option>农业
+    <option>财政
+    <option>城市概况
+    <option>旅游业
+    <option>教育
+    <option>科技
+    <option>公共管理与社会保障
+    </select> 
+    <select class="sub_attr"> 
+    <option>----请选择具体指标---- 
+    </select> 
+    <select class="sub_attr" onChange="print_map0()" id=0>
+    <option>----请选择具体指标---- 
+    <option value=0>人口</option> 
+    <option value=1>城镇人口</option> 
+    <option value=2>农村人口</option> 
+    </select> 
+    <select class="sub_attr" onChange="print_map1()" id=1> 
+    <option>----请选择具体指标---- 
+    <option value=0>国内生产总值</option> 
+    <option value=1>国内第一产业生产总值</option> 
+    <option value=2>国内第二产业生产总值</option> 
+    <option value=3>国内第三产业生产总值</option> 
+    <option value=4>国内人均生产总值</option> 
+    </select> 
+    <select class="sub_attr" onChange="print_map2()" id=2> 
+    <option>----请选择具体指标---- 
+    <option value=0>居民消费水平指数</option> 
+    <option value=1>居民消费水平</option> 
+    </select> 
+    <select class="sub_attr" onChange="print_map3()" id=3> 
+    <option>----请选择具体指标---- 
+    <option value=0>农林牧渔总产值</option> 
+    <option value=1>农业总产值</option> 
+    <option value=2>林业总产值</option> 
+    <option value=3>牧业总产值</option> 
+    <option value=4>渔业总产值</option> 
+    </select>
+    <select class="sub_attr" onChange="print_map4()" id=4> 
+    <option>----请选择具体指标---- 
+    <option value=0>地方财政一般预算收入</option> 
+    <option value=1>地方财政一般预算支出</option> 
+    </select> 
+    <select class="sub_attr" onChange="print_map5()" id=5>
+    <option>----请选择具体指标---- 
+    <option value=0>城市用水普及率</option> 
+    <option value=1>城市燃气普及率</option> 
+    <option value=2>每万人拥有公共交通车辆</option> 
+    <option value=3>人均城市道路面积</option> 
+    <option value=4>每万人拥有公共厕所</option> 
+    </select> 
+    <select class="sub_attr" onChange="print_map6()" id=6>
+    <option>----请选择具体指标---- 
+    <option value=0>国际旅游外汇收入</option> 
+    </select> 
+    <select class="sub_attr" onChange="print_map7()" id=7>
+    <option>----请选择具体指标---- 
+    <option value=0>小学生师比</option> 
+    <option value=1>初中生师比</option> 
+    <option value=2>高中生师比</option> 
+    <option value=3>高校生师比值</option> 
+    </select> 
+    <select class="sub_attr" onChange="print_map8()" id=8>
+    <option>----请选择具体指标---- 
+    <option value=0>国内专利申请授权量</option> 
+    <option value=1>国内发明专利申请授权量</option> 
+    <option value=2>国内实用新型专利申请授权量</option>  
+    <option value=3>国内外观设计专利申请授权量</option> 
+    </select> 
+    <select class="sub_attr" onChange="print_map9()" id=9>
+    <option>----请选择具体指标---- 
+    <option value=0>城镇职工参加养老保险人数</option> 
+    <option value=1>在职职工参加养老保险人数</option> 
+    <option value=2>离退人员参加养老保险人数</option> 
+    </select> 
+        
+    <select class="year" onChange="get_year()" id="year"> 
+    <option value=10>----请选择具体年份---- 
+    <option value=0>2016年</option> 
+    <option value=1>2015年</option> 
+    <option value=2>2014年</option> 
+    <option value=3>2013年</option> 
+    <option value=4>2012年</option> 
+    <option value=5>2011年</option> 
+    <option value=6>2010年</option> 
+    <option value=7>2009年</option> 
+    <option value=8>2008年</option> 
+    <option value=9>2007年</option>
+    </select>
+            
+</div>
+    <div id="view1" class="block-div">
+    </div>
+</div>
+<div id="top-right" class="outer-div">
+    <label><input type="checkbox" name="vehicle" value="grouped" id="sorted"/> 按数值排序</label>
+    <div id="view2" class="block-div">
+    </div>
+    
+</div>
+<div id="bottom-right" class="outer-div">
+    <label>
+    <input type="checkbox" name="vehicle" value="stacked" id="stacked"/> 查看堆叠图
+        <input type="radio" name="choice"  value=4 id="see_all"/> 从总体指标来看
+        <input type="radio" name="choice"  value=5  id="see_specific" checked/> 指标具体变化
+        <input type="checkbox" name="vehicle" value="added" id="added"/> 点击地图添加省区</label>
+    
+    <div id="view3" class="block-div">
+    </div>
+</div>
+<div id="bottom-div" class="outer-div">
+	<div id="view4" class="block-div">
+		
+	</div>
+</div>
+<div id="bottom-div-right" class="outer-div">
+	<div id="view5" class="block-div">
+		
+	</div>
+</div>
+    
+<div id="tooltip"></div><!-- div to hold tooltip. -->
+<!--<svg width="560" height="470" id="statesvg"></svg> <!-- svg to hold the map. -->
+
+
+
+    
+</form>
+<body>   
+<script language="javascript" type="text/javascript">
+var atrri,sub_attri,chosen_year;
+attri=0;
+sub_attri=0;
+chosen_year=0;
+View1_show(0,0,0);
+view2_view(0,0,0);
+    
+
+
+function print_map0(){
+    attri=0;
+    sub_attri=document.getElementById(0).value;
+    View1_show(attri,sub_attri,chosen_year);
+    view2_view(attri,sub_attri,chosen_year);
+    view3_2.view3_single(attri,sub_attri);
+    index_info.view_index_info(attri);
+}
+    
+function print_map1(){
+    attri=1;
+    sub_attri=document.getElementById(1).value;
+    View1_show(attri,sub_attri,chosen_year);
+    view2_view(attri,sub_attri,chosen_year);
+    view3_2.view3_single(attri,sub_attri);
+    index_info.view_index_info(attri);
+}
+function print_map2(){
+    attri=2;
+    sub_attri=document.getElementById(2).value;
+    View1_show(attri,sub_attri,chosen_year);
+    view2_view(attri,sub_attri,chosen_year);
+    view3_2.view3_single(attri,sub_attri);
+    index_info.view_index_info(attri);
+}
+function print_map3(){
+    attri=3;
+    sub_attri=document.getElementById(3).value;
+    View1_show(attri,sub_attri,chosen_year);
+    view2_view(attri,sub_attri,chosen_year);
+    view3_2.view3_single(attri,sub_attri);
+    index_info.view_index_info(attri);
+}
+function print_map4(){
+    attri=4;
+    sub_attri=document.getElementById(4).value;
+    View1_show(attri,sub_attri,chosen_year);
+    view2_view(attri,sub_attri,chosen_year);
+    view3_2.view3_single(attri,sub_attri);
+    index_info.view_index_info(attri);
+}
+function print_map5(){
+    attri=5;
+    sub_attri=document.getElementById(5).value;
+    View1_show(attri,sub_attri,chosen_year);
+    view2_view(attri,sub_attri,chosen_year);
+    index_info.view_index_info(attri);
+}
+function print_map6(){
+    attri=6;
+    sub_attri=document.getElementById(6).value;
+    View1_show(attri,sub_attri,chosen_year);
+    view2_view(attri,sub_attri,chosen_year);
+    view3_2.view3_single(attri,sub_attri);
+    index_info.view_index_info(attri);
+}
+function print_map7(){
+    attri=7;
+    sub_attri=document.getElementById(7).value;
+    View1_show(attri,sub_attri,chosen_year);
+    view2_view(attri,sub_attri,chosen_year);
+    view3_2.view3_single(attri,sub_attri);
+    index_info.view_index_info(attri);
+}
+function print_map8(){
+    attri=8;
+    sub_attri=document.getElementById(8).value;
+    View1_show(attri,sub_attri,chosen_year);
+    view2_view(attri,sub_attri,chosen_year);
+    view3_2.view3_single(attri,sub_attri);
+    index_info.view_index_info(attri);
+}
+function print_map9(){
+    attri=9;
+    sub_attri=document.getElementById(9).value;
+    View1_show(attri,sub_attri,chosen_year);
+    view2_view(attri,sub_attri,chosen_year);
+    view3_2.view3_single(attri,sub_attri);
+    index_info.view_index_info(attri);
+}
+function get_year(){
+    chosen_year=document.getElementById("year").value;
+    View1_show(attri,sub_attri,chosen_year);
+    view2_view(attri,sub_attri,chosen_year);
+    view3_2.view3_single(attri,sub_attri);
+}
+    
+function try_(){
+    var value_pre=document.getElementById("mapAnim").value
+    if (value_pre=="动画"){
+        document.getElementById("mapAnim").value="停止";
+        map_animate(attri,sub_attri,chosen_year);
+    }
+    else{
+        document.getElementById("mapAnim").value="动画";
+        map_animate_stop(attri,sub_attri);
+    }
+}
+
+    
+var real_year=0;
+var animate_timer;
+var interval_timer;
+interval_timer=3000;
+function map_animate(a,b,yy=0) {  
+    //View1_show(a,b,year%10);
+   real_year=yy%10;
+    animate_timer=setInterval(function(){real_animate(a,b);},interval_timer);
+    //animate_timer=setInterval("real_animate(a,b)",1000);
+    
+}
+function real_animate(a,b){
+    real_year%=10;
+    var vvv = document.getElementById("year");
+	
+    View1_show(a,b,real_year);
+    view2_view(a,b,real_year);
+    vvv.options[real_year+1].selected = true;
+    real_year=real_year+1;
+}
+function map_animate_stop(a,b){
+    console.log(a);
+    console.log(b);
+    clearInterval(animate_timer);
+    real_year%=10;
+    View1_show(a,b,real_year);
+    view2_view(a,b,real_year);
+    real_year=0;
+}
+view3_2.view3_single(0,0);
+//view3_3.view3_stack(1,0);
+view4();
+view5();
+</script>
+
+</body>
